@@ -6,6 +6,7 @@ const connectDB = require("./conf/db");
 
 // Routers file
 const toDoRoutes = require('./routes/toDo.routes');
+const getRoot = require('./routes/index.routes');
 
 // Load config
 dotenv.config({ path: './conf/config.env' })
@@ -22,13 +23,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// Body parser
+app.use(express.json());
 
 // Mount routers
+app.use('/', getRoot);
 app.use('/todo', toDoRoutes);
-
-app.get('/', (req, res, next) => {
-    res.render('index');
-});
 
 // Connect to DB
 connectDB();
