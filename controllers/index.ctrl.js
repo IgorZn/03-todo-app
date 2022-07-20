@@ -3,10 +3,9 @@ const ToDo = require('../models/toDo.mongo')
 // @desc        Root
 // @route       GET /
 // @access      Public
-exports.getRoot = async (req, res, next) => {
+exports.getRoot = async (res, req, next) => {
     const toDos = await ToDo.find({});
 
-    res
+    req
         .render('index', { todos: toDos})
-        .redirect(200, '/');
 };
