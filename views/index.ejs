@@ -13,7 +13,10 @@
 
   <ul>
     <% todos.forEach(function(todo){ %>
-      <li><%= todo.text %> - <%= todo.body %> <a data-id="<%= todo._id %>" href="#" class="delete-todo">Delete</a></li>
+      <li>
+        <%= todo.text %> - <%= todo.body %> <a data-id="<%= todo._id %>" href="#" class="delete-todo">Delete</a>
+        <a href="/todo/get/<%= todo._id %>" class="edit-todo">Edit</a>
+      </li>
     <% }) %>
   </ul>
 
